@@ -28,14 +28,16 @@ catch (PDOException $e)
 $sql = "SELECT * FROM hw_items";
 $query = $conn->prepare($sql);
 $query->execute();
-$hw_list = array();
+$hw_list = $query->fetchAll(PDO::FETCH_ASSOC); 
 
 //  fetch() method fetches the next row from a result set. Here the variable $query stores the 
 // result set of the sql Select query.
-while($hw_item = $query->fetch())
+/*while($hw_item = $query->fetch())
 {
     $hw_list[] = $hw_item;
 }
+ 
+ */
 print_r($hw_list);
  ?>
 	 
@@ -59,12 +61,13 @@ print_r($hw_list);
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
         <h2>Homework Assignment List</h2>
-        <div id="hw_list">
+        <div id="list">
             <?php foreach($hw_list as $hw)  { ?>
-                <h3> <?php echo $hw -> Title; ?></h3>
-                  <p>Due <?php echo $hw->Date;?></p>
-                  <p>Description:<br /><textarea  class="description" name="description"><?php echo $hw->Description; } ?></textarea>
-                  </p>
+                  <p> <?php echo $hw['Title']; 
+                   echo $hw['Date'];
+                   echo $hw[Description]; 
+			      }
+			 ?></p>
                 
         </div>
     </main>
