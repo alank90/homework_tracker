@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- =================  CSS Files  ================-->
+    <link rel="stylesheet" href="css/main.css">
+    <title>Homework Tracker</title>
+</head>
+
+<body>
+    <h1>My Homework Assignments</h1>
+    <div id="new_homework" title="Enter Homework Item">
+        <form method="POST" action="new_hw.php">
+            <p> Title:
+                <br />
+                <input type="text" class="title" name="title" placeholder="Homework Assignment" /> </p>
+            <p> Date Due:
+                <br />
+                <input type="text" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" /> </p>
+            <p> Description:
+                <br />
+                <textarea class="description" name="description"></textarea>
+            </p>
+            <div class="actions">
+                <input type="submit" value="Create Homework Assignment" name="new_submit" /> </div>
+        </form>
+    </div>
+    <!--=================  Main HTML Markup Here  ====================-->
+    <main>
+        <h2>Homework Assignment List</h2>
+        <div id="hw_list">
+            <?php foreach($hw_items as $hw){ ?>
+                <h3> <?php echo $hw->title; ?>
+                  <p>Due <?php echo $hw->due_date;?></p>
+                  <p>Description:<br /><textarea id="description_<?php echo $hw->hw_id; ?>" class="description" name="description"><?php echo $hw->description; } ?></textarea>
+                  </p>
+                </h3>
+        </div>
+    </main>
+</body>
+
+</html>
