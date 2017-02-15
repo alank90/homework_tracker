@@ -8,8 +8,9 @@
 </head>
 
 <body>
-	<?php
-
+<?php
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
 require ("dbinfo.inc.php"); //include login info file
 
 try
@@ -38,12 +39,12 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 }
  
  */
-print_r($hw_list);
+//print_r($hw_list);
  ?>
 	 
     <h1>My Homework Assignments</h1>
     <div id="new_homework" title="Enter Homework Item">
-        <form method="POST" action="new_hw.php">
+        <form method="POST" action="add_item.php">
             <p> Title:
                 <br />
                 <input type="text" class="title" name="title" placeholder="Homework Assignment" /> </p>
@@ -55,22 +56,29 @@ print_r($hw_list);
                 <textarea class="description" name="description"></textarea>
             </p>
             <div class="actions">
-                <input type="submit" value="Create Homework Assignment" name="new_submit" /> </div>
+                <input type="submit" value="Add Assignment" name="new_submit" /> </div>
         </form>
     </div>
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
         <h2>Homework Assignment List</h2>
         <div id="list">
-            <?php foreach($hw_list as $hw)  { ?>
-                  <p> <?php echo $hw['Title']; 
-                   echo $hw['Date'];
-                   echo $hw[Description]; 
+            <?php foreach($hw_list as $hw)  { 
+            	 echo '<ul>';
+            	  echo  '<li>' .  $hw['Title'] . '</li>';
+                   //echo  '<li>'  . $hw['Date']. '<a title='Click Here to Delete' href='delete.php?id=" . $hw['id'] ."'><button class='btn' id='delete'>X</button></a></li>"
+                   echo  '<li>' . $hw['Description'] . '</li>';
+                 echo '</ul>';
 			      }
-			 ?></p>
+			 ?>
                 
         </div>
     </main>
+    
+    <!-- ================ Javascript below this Line   =============  -->
+    <script>
+    	// document.getElementById("delete").onclick = function () { alert('hello!'); };
+     </script>
 </body>
 
 </html>
