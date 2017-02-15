@@ -16,7 +16,7 @@ catch (PDOException $e)
 
 // get the 'id' variable from the URL and store it in $id_val
 $id_val = $_REQUEST['id'];
-$stmt = "DELETE FROM Inventory WHERE id = '$id_val'";
+$stmt = "DELETE FROM hw_items WHERE id = '$id_val'";
 $result = $conn->query($stmt);	
 ?>
 <h2><center><b>Deleted Record Sucessfully</b></center></h2>

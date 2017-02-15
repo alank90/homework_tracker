@@ -65,10 +65,10 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
         <div id="list">
             <?php foreach($hw_list as $hw)  { 
             	 echo '<ul>';
-            	  echo  '<li>' .  $hw['Title'] . '</li>';
-                   //echo  '<li>'  . $hw['Date']. '<a title='Click Here to Delete' href='delete.php?id=" . $hw['id'] ."'><button class='btn' id='delete'>X</button></a></li>"
-                   echo  '<li>' . $hw['Description'] . '</li>';
-                 echo '</ul>';
+            	    echo  '<li>' .  $hw['Title'] . '</li>';
+                    echo "<li>" . $hw['Date'] . "<a title=Click Here to Delete  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
+				    echo  '<li>' . $hw['Description'] . '</li>';
+                  echo '</ul>';
 			      }
 			 ?>
                 
