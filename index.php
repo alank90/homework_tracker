@@ -31,14 +31,6 @@ $query = $conn->prepare($sql);
 $query->execute();
 $hw_list = $query->fetchAll(PDO::FETCH_ASSOC); 
 
-//  fetch() method fetches the next row from a result set. Here the variable $query stores the 
-// result set of the sql Select query.
-/*while($hw_item = $query->fetch())
-{
-    $hw_list[] = $hw_item;
-}
- 
- */
 //print_r($hw_list);
  ?>
 	 
@@ -65,9 +57,9 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
         <div id="list">
             <?php foreach($hw_list as $hw)  { 
             	 echo '<ul>';
-            	    echo  '<li>' .  $hw['Title'] . '</li>';
-                    echo "<li>" . $hw['Date'] . "<a title=Click Here to Delete  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
-				    echo  '<li>' . $hw['Description'] . '</li>';
+            	    echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
+                    echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
+				    echo  '<h4>Details:</h4><li>' . $hw['Description'] . '</li>';
                   echo '</ul>';
 			      }
 			 ?>
