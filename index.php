@@ -60,7 +60,7 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
             	    echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
                     echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
 				    echo  '<h4>Details:</h4><li class ="description" contenteditable="true">' . $hw['Description'] . '</li>';
-					echo  "<button>Update</button>";
+					echo  "<button class= 'desc_update'>Update</button>";
                   echo '</ul>';
 			      }
 			 ?>
@@ -75,19 +75,20 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 		 var str= "";
 		 var test = document.getElementById("update");
 		
-		 //Get updated Desription field value when <enter> ket hit.
+		 //Get updated Desription field value when <enter> key hit.
 		 el.addEventListener("keypress", function(e)  {
 		 	 if (e.keyCode == 13)  {
-		 	    str = e.target.innerHTML;
+		 	     str = e.target.innerHTML;
 	 	 	 }
 		  });
 		  
-		function updateField(str) {
-	  	      console.log("test");
-		/*	if (str == "") {
+	// Event listener for button click			 
+	  el.addEventListener("click", function()  {
+	  	    console.log(str);
+	  	   if (str == "") {
 				return;
-			}
-			if (window.XMLHttpRequest) {
+		  }
+		  if (window.XMLHttpRequest) {
 				// code for IE7+, Firefox, Chrome, Opera, Safari
 				xmlhttp = new XMLHttpRequest();
 			} else {// code for IE6, IE5
@@ -100,11 +101,7 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 			}
 			xmlhttp.open("POST", "update.php?q=" + str, true);
 			xmlhttp.send();
-		*/
-		}
-		 var x = document.getElementById("list");
-		 x.getElementsByTagName("li");
-	   //x.addEventListener("click", updateField(str));
+	  });
     
 	</script>
  
