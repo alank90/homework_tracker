@@ -12,7 +12,7 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 require ("dbinfo.inc.php"); //include login info file
-print_r($hw_list);
+
 try
     {
       $conn = new PDO($dsn, $username, $password);
@@ -59,7 +59,7 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach($hw_list as $hw)  { 
             	 echo '<ul id = "list">';
             	    echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
-                    echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
+                    echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
 				    echo  "<h4>Details:</h4><li class ='description' contenteditable='true' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
 					echo  "<button class= 'desc_update'>Update</button>";
 				 echo '</ul>';
