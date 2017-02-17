@@ -23,5 +23,5 @@ catch (PDOException $e)
 
     // execute the query
     $stmt->execute();
-echo ("Update Succesful");
+echo ("Update Succesful!");
 ?>

@@ -48,3 +48,10 @@ li  {
         	color: #800000;
         	font-size: 22px;
         }
+
+#post_message  {
+	font-size: 20px;
+	font-weight:  700;
+	text-align: center;
+	
+}

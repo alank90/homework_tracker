@@ -71,24 +71,24 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
     
     <!-- ================ Javascript below this Line   =============  -->
     <script>
-		// AJAX used to post updated Description info field
+		//====  AJAX used to post updated Description info field ======== //
+		 
 		 var el = document.getElementById("list");
 		 var str= "";
-		 var test = document.getElementById("update");
 		 var id_val;
+		 
 		 //Get updated Desription field value when <enter> key hit.
 		 el.addEventListener("keypress", function(e)  {
 		 	 if (e.keyCode == 13)  {
 		 	     str = e.target.innerHTML;
 		 	     id_val = e.target.getAttribute("data-id");
-		 	      console.log(id_val);
+		 	     console.log(e.target);
 		     }
 		  });
 		  
 	// Event listener for button click			 
 	  el.addEventListener("click", function()  {
-	  	  
-	  	   if (str == "") {
+	  	  if (str == "") {
 				return;
 		  }
 		  if (window.XMLHttpRequest) {
@@ -97,12 +97,14 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 			} else {// code for IE6, IE5
 				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			}
+			/* Monitoring of State of the AJAX request and assigning response 
+			from server to a variable on success */
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					document.getElementById("post_message").innerHTML = this.responseText;
 				}
 			}
-			
+			// Setup and sending of the AJAX request
 			var parameters = "desc_value=" + str + "&id=" + id_val;
 			xmlhttp.open("POST", "update.php", true);
 			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -110,7 +112,6 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 	  });
     
 	</script>
- 
-</body>
-
+	
+  </body>
 </html>
