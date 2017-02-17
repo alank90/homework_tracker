@@ -12,7 +12,7 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 require ("dbinfo.inc.php"); //include login info file
-
+print_r($hw_list);
 try
     {
       $conn = new PDO($dsn, $username, $password);
@@ -25,13 +25,13 @@ catch (PDOException $e)
 //End of Connection
 
 
-// Retrieve Homework table info via SQL
+// Retrieve Homework table info via SQL & PHP PDO commands
 $sql = "SELECT * FROM hw_items";
 $query = $conn->prepare($sql);
 $query->execute();
 $hw_list = $query->fetchAll(PDO::FETCH_ASSOC); 
 
-//print_r($hw_list);
+
  ?>
 	 
     <h1>My Homework Assignments</h1>
@@ -54,14 +54,15 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
         <h2>Homework Assignment List</h2>
+        <div id="post_message"></div>
         <div id="list">
             <?php foreach($hw_list as $hw)  { 
             	 echo '<ul id = "list">';
             	    echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
                     echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'>X</button></a></li>";
-				    echo  '<h4>Details:</h4><li class ="description" contenteditable="true">' . $hw['Description'] . '</li>';
+				    echo  "<h4>Details:</h4><li class ='description' contenteditable='true' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
 					echo  "<button class= 'desc_update'>Update</button>";
-                  echo '</ul>';
+				 echo '</ul>';
 			      }
 			 ?>
                 
@@ -74,17 +75,19 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 		 var el = document.getElementById("list");
 		 var str= "";
 		 var test = document.getElementById("update");
-		
+		 var id_val;
 		 //Get updated Desription field value when <enter> key hit.
 		 el.addEventListener("keypress", function(e)  {
 		 	 if (e.keyCode == 13)  {
 		 	     str = e.target.innerHTML;
-	 	 	 }
+		 	     id_val = e.target.getAttribute("data-id");
+		 	      console.log(id_val);
+		     }
 		  });
 		  
 	// Event listener for button click			 
 	  el.addEventListener("click", function()  {
-	  	    console.log(str);
+	  	  
 	  	   if (str == "") {
 				return;
 		  }
@@ -96,11 +99,14 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 			}
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("update").innerHTML = this.responseText;
+					document.getElementById("post_message").innerHTML = this.responseText;
 				}
 			}
-			xmlhttp.open("POST", "update.php?q=" + str, true);
-			xmlhttp.send();
+			
+			var parameters = "desc_value=" + str + "&id=" + id_val;
+			xmlhttp.open("POST", "update.php", true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.send(parameters);
 	  });
     
 	</script>
