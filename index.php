@@ -39,7 +39,7 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
         <form method="POST" action="add_item.php">
             <p> Title:
                 <br />
-                <input type="text" class="title" name="title" placeholder="Homework Assignment" /> </p>
+                <input type="text" class="title" name="title" placeholder="Homework Assignment" required/> </p>
             <p> Date Due:
                 <br />
                 <input type="text" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" /> </p>
