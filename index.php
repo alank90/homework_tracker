@@ -35,22 +35,39 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
  ?>
 	 
     <h1>My Homework Assignments</h1>
-    <div id="new_homework" title="Enter Homework Item">
-        <form method="POST" action="add_item.php">
-            <p> Title:
-                <br />
-                <input type="text" class="title" name="title" placeholder="Homework Assignment" required/> </p>
-            <p> Date Due:
-                <br />
-                <input type="text" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" /> </p>
-            <p> Description:
-                <br />
-                <textarea class="description" name="description"></textarea>
-            </p>
-            <div class="actions">
-                <input type="submit" value="Add Assignment" name="new_submit" /> </div>
-        </form>
-    </div>
+   
+   
+    <!--======== New Assignment Modal  =========== -->
+   	<a href="#openModal">Create New Assignment</a>
+		<div id="openModal" class="modalDialog">
+			<div>
+			<a href="#close" title="Close" class="close">X</a>
+				<h2>Add Assignment</h2>
+				<form method="POST" action="add_item.php">
+					<p>
+						Title:
+						<br />
+						<input type="text" class="title" name="title" placeholder="Homework Assignment" required/>
+					</p>
+					<p>
+						Date Due:
+						<br />
+						<input type="text" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" />
+					</p>
+					<p>
+						Description:
+						<br />
+						<textarea class="description" name="description"></textarea>
+					</p>
+					<div class="actions">
+						<input type="submit" value="Add Assignment" name="new_submit" />
+					</div>
+				</form>
+			</div>
+		</div>
+    <!--============= End New Assignment Modal  ========= -->
+    
+    
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
         <h2>Homework Assignment List</h2>
