@@ -18,6 +18,8 @@ catch (PDOException $e)
 $id_val = $_REQUEST['id'];
 $stmt = "DELETE FROM hw_items WHERE id = '$id_val'";
 $result = $conn->query($stmt);	
+echo 'Deleted Record Sucessfully';
+echo "<br /n><a href= 'index.php' style='color:black'>Return To HomeWork List</a>";
 ?>
-<h2><center><b>Deleted Record Sucessfully</b></center></h2>
+
 	

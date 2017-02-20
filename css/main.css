@@ -36,6 +36,12 @@ li {
 	text-align: center;
 }
 
+h1 img  {
+	max-width: 10vw;
+	margin-left: 3vw;
+	height: auto;
+}
+
 .btn {
 	color: #ff0000;
 	font-size: 18px;
@@ -62,11 +68,11 @@ li {
 /*==== Modal Dialog Box Ruleset  ====*/
 
 a[href="#openModal"] {
-	font-size: 36px;
+	font-size: 2vw;
     display: block;
     width: 15vw;
     text-decoration: none;
-    background: #4E9CAF;
+    background: #e4f1fe;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
@@ -81,9 +87,9 @@ a[href="#openModal"] {
     6px 5px 1px #ccc, 5px 6px 1px #eee,
     7px 6px 1px #ccc;
 }
-}
+
     a[href="#openModal"]:hover  {
-    	background: #888888;
+    	background-color: #67809f;
     }
 
 .modalDialog {
@@ -140,9 +146,9 @@ a[href="#openModal"] {
 	box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { 
-	background: #00d9ff; 
-}
+    .close:hover { 
+	   background: #00d9ff; 
+    }
 
 
 

@@ -34,7 +34,8 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 
  ?>
 	 
-    <h1>My Homework Assignments</h1>
+    <h1>My Homework Assignments<img src="img/homework.png"></h1>
+    
    
    
     <!--======== New Assignment Modal  =========== -->

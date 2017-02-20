@@ -30,5 +30,6 @@ catch (PDOException $e)
 			
 echo '<br /n>';
 echo '<h3>Added Record Successfully</h3>';
+echo "<br><a href= 'index.php' style='color:black'>Return To HomeWork List</a>";
            
 ?>
