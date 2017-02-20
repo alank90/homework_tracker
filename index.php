@@ -26,11 +26,10 @@ catch (PDOException $e)
 
 
 // Retrieve Homework table info via SQL & PHP PDO commands
-$sql = "SELECT * FROM hw_items";
+$sql = "SELECT * FROM hw_items ORDER BY Date ASC";
 $query = $conn->prepare($sql);
 $query->execute();
 $hw_list = $query->fetchAll(PDO::FETCH_ASSOC); 
-
 
  ?>
 	 
@@ -53,7 +52,7 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
 					<p>
 						Date Due:
 						<br />
-						<input type="text" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" />
+						<input type="date" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" />
 					</p>
 					<p>
 						Description:
@@ -74,8 +73,8 @@ $hw_list = $query->fetchAll(PDO::FETCH_ASSOC);
         <h2>Homework Assignment List</h2>
         <div id="post_message"></div>
         <div id="list">
-            <?php foreach($hw_list as $hw)  { 
-            	 echo '<ul id = "list">';
+            <?php foreach($hw_list as $hw)  {
+            	    echo '<ul id = "list">';
             	    echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
                     echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
 				    echo  "<h4>Details:</h4><li class ='description' contenteditable='true' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";

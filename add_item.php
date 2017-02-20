@@ -10,6 +10,7 @@ $title = $_POST['title'];
 $due_date = $_POST['due_date'];
 $description = $_POST['description'];
 
+$due_date = date("Y-m-d");
 // Establish database connection w/PDO.  
 try
     {
