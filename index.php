@@ -74,7 +74,7 @@ require ("dbinfo.inc.php"); //include login info file
             <?php foreach($hw_list as $hw)  {
             	    echo '<ul>';
             	      echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
-                      echo "<h4>Due On:</h4><li>" . $hw['Date'] . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
+                      echo "<h4>Due On:</h4><li>" . date('D F j', strtotime($hw['Date'])) . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
 				      echo  "<h4>Details:</h4><li class ='description' contenteditable='true' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
 				    echo '</ul>';
 			      }
@@ -83,43 +83,6 @@ require ("dbinfo.inc.php"); //include login info file
         </div>
     </main>
     
-    <!-- ================ Javascript below this Line   =============  -->
-    <script>
-		//====  AJAX used to post updated Description info field ======== //
-		 
-		 var el = document.getElementById("list");
-		 var str = "";
-		 var id_val;
-		 
-		 //Get updated Desription field value when <enter> key hit.
-		 el.addEventListener("blur", function(e)  {
-		 	     str = e.target.innerHTML;
-		 	     id_val = e.target.getAttribute("data-id");
-		 	     console.log(e.target);
-		 	     console.log(str);
-		 	     if (window.XMLHttpRequest) {
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			    } else {// code for IE6, IE5
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			
-			/* Monitoring of State of the AJAX request and assigning response 
-			from server to a variable on success */
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("post_message").innerHTML = this.responseText;
-				}
-			}
-			// Setup and sending of the AJAX request
-			var parameters = "desc_value=" + str + "&id=" + id_val;
-			xmlhttp.open("POST", "update.php", true);
-			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xmlhttp.send(parameters);
-		   //  }
-		  }, true); // Need Event capturing here because blur does not bubble.
-		  
-	</script>
-	
+    <script src="js/main.js"></script>
   </body>
 </html>
