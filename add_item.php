@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
 require 'dbinfo.inc.php';
 
 // Put values from the form submit(POST) into php variables
@@ -32,5 +29,3 @@ catch (PDOException $e)
     }
 	
 echo "<br><a href= 'index.php' style='color:black'>Return To HomeWork List</a>";
-           
-?>

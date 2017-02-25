@@ -20,4 +20,3 @@ catch (PDOException $e)
     {
        echo $e -> getMessage() . "<h1>Resource Unavailable. Please Contact the System Administrator</h1>";
     }
-?>
