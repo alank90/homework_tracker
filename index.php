@@ -17,11 +17,12 @@ require ("dbinfo.inc.php"); //include login info file
 	try {
 		$conn = new PDO($dsn, $username, $password);
 
-		// Retrieve Homework table info via SQL & PHP PDO commands
+		/*Retrieve Homework table info via SQL & PDO:: commands. 
+		No variables are going to be used in the query, so we can 
+		use the PDO::query() method. */
 		$sql = "SELECT * FROM hw_items ORDER BY Date ASC";
-		$query = $conn -> prepare($sql);
-		$query -> execute();
-		$hw_list = $query -> fetchAll(PDO::FETCH_ASSOC);
+		$stmt = $conn -> query($sql);
+		$hw_list = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	} catch (PDOException $e) {
 		 echo $e -> getMessage() . "<h1>Resource Unavailable. Please contact the System Administrator</h1>";
 	}

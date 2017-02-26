@@ -7,8 +7,10 @@ try
 	
        // get the 'id' variable from the URL and store it in $id_val
     $id_val = $_REQUEST['id'];
-    $stmt = "DELETE FROM hw_items WHERE id = '$id_val' ";
-    $result = $conn -> query($stmt);	
+	
+	//Note here we use positional placeholder in prepare staement
+    $stmt = $conn->prepare("DELETE FROM hw_items WHERE id = ?");
+    $stmt -> execute([$id_val]);	
     echo 'Deleted Record Sucessfully';
     echo "<br /n><a href= 'index.php' style='color:black'>Return To HomeWork List</a>";
  }
