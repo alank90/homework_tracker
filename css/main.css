@@ -49,11 +49,17 @@ h1 img  {
 	border-radius: 50%;
 	float: right;
 	margin-right: 10px;
+	transition: all;
 }
+   .btn:hover  {
+      	  transform: scale(1.4);
+     }
 
 .delete_btn {
-	width: 20px;
+	width: 1.5vw;
 }
+   
+
 
 #post_message {
 	font-size: 20px;
@@ -86,10 +92,11 @@ a[href="#openModal"] {
     5px 4px 1px #ccc, 4px 5px 1px #eee,
     6px 5px 1px #ccc, 5px 6px 1px #eee,
     7px 6px 1px #ccc;
+    transition: background-color 0.8s ease;
 }
 
     a[href="#openModal"]:hover  {
-    	background-color: #2574a9;
+    	background-color: #82CFFD;
     }
 
 .modalDialog {

@@ -9,7 +9,8 @@ try
        $conn = new PDO($dsn, $username,$password);
 	
     	 /* Prepare SQL statement & bind values. This prevents sql injections and automatically escapes 
-	         special characters like apostrophe's.*/
+	         special characters like apostrophe's. Here we make variable $stmt a PDOStatement:: object with 
+		     all its inherent methods available to us.  */
        $stmt = $conn->prepare("UPDATE hw_items SET Description = :description_val WHERE id=" . $id_val);
        $stmt -> bindValue(':description_val', $description_val, PDO::PARAM_STR);
        $stmt -> execute();
