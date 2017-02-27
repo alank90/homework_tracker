@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset=utf-8>
  
     <!-- =================  CSS Files  ================-->
     <link rel="stylesheet" href="css/main.css">
@@ -10,8 +10,8 @@
 
 <body>
 <?php
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
+//ini_set('display_errors',1); 
+//error_reporting(E_ALL);
 require ("dbinfo.inc.php"); //include login info file
 
 	try {
@@ -28,15 +28,10 @@ require ("dbinfo.inc.php"); //include login info file
 	}
 //End of Connection
 
-
-
-
  ?>
 	 
     <h1>My Homework Assignments<img src="img/homework.png"></h1>
-    
-   
-   
+       
     <!--======== New Assignment Modal  =========== -->
    	<a href="#openModal">Create New Assignment</a>
 		<div id="openModal" class="modalDialog">
@@ -70,8 +65,9 @@ require ("dbinfo.inc.php"); //include login info file
     
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
-        <h2>Homework Assignment List</h2>
-        <div id="post_message"></div>
+        <h2>Assignment's Due.</h2>
+           <h3>(Click Details to edit)</h3>
+        <div id="post_message"></div>  <!-- Placeholder for AJAX status request message -->
         <div id = "list">
             <?php foreach($hw_list as $hw)  {
             	    echo '<ul>';
@@ -85,6 +81,9 @@ require ("dbinfo.inc.php"); //include login info file
         </div>
     </main>
     
+    <!-- ========== Javascript Files below here  ==========================-->
+    
     <script src="js/main.js"></script>
+  
   </body>
 </html>

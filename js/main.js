@@ -8,6 +8,8 @@ var id_val;
 el.addEventListener("blur", function(e) {
 	str = e.target.innerHTML;
 	id_val = e.target.getAttribute("data-id");
+	//Need to encode string in case special characters like &amp used.
+	str =  encodeURIComponent(str);
 	console.log(e.target);
 	console.log(str);
 
