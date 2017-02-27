@@ -32,6 +32,5 @@ el.addEventListener("blur", function(e) {
 	xmlhttp.open("POST", "update.php", true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.send(parameters);
-	//  }
-}, true);
-// Need Event capturing here because blur does not bubble.
+	
+}, true);   // Need Event capturing here because blur does not bubble.
