@@ -1,9 +1,11 @@
 html  {
-   background: url(/homework/img/clouds-background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+   background: url(/homework/img/clouds-background.jpg) no-repeat center center fixed;
+   background-size: cover;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 h1 {
@@ -78,7 +80,7 @@ h1 img  {
 	width: 1.5vw;
 }
    
-#post_message {
+   #post_message {
 	font-size: 20px;
 	font-weight: 700;
 	text-align: center;
@@ -109,6 +111,7 @@ a[href="#openModal"] {
     5px 4px 1px #ccc, 4px 5px 1px #eee,
     6px 5px 1px #ccc, 5px 6px 1px #eee,
     7px 6px 1px #ccc;
+    -webkit-transition: background-color 0.8s ease;
     transition: background-color 0.8s ease;
 }
 
@@ -127,7 +130,6 @@ a[href="#openModal"] {
 	z-index: 99999;
 	opacity: 0;
 	-webkit-transition: opacity 400ms ease-in;
-	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 	pointer-events: none;
 }
@@ -148,10 +150,6 @@ a[href="#openModal"] {
 	    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727)); 
 	    /* Safari 5.1, Chrome 10+ */ 
 	    background: -webkit-linear-gradient(top, #5fc5f2, #a6dff8); 
-	    /* Firefox 3.6+ */
-	    background: -moz-linear-gradient(top, #5fc5f2, #a6dff8); 
-	    /* IE 10 */
-	    background: -ms-linear-gradient(top, #5fc5f2, #a6dff8); 
 	    /* Opera 11.10+ */ 
 	    background: -o-linear-gradient(top, #5fc5f2, #a6dff8);
      }
@@ -169,11 +167,7 @@ a[href="#openModal"] {
 	width: 24px;
 	text-decoration: none;
 	font-weight: bold;
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
 	border-radius: 12px;
-	-moz-box-shadow: 1px 1px 3px #000;
-	-webkit-box-shadow: 1px 1px 3px #000;
 	box-shadow: 1px 1px 3px #000;
 }
 
