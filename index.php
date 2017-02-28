@@ -18,16 +18,15 @@ require ("dbinfo.inc.php"); //include login info file
 		$conn = new PDO($dsn, $username, $password);
 
 		/*Retrieve Homework table info via SQL & PDO:: commands. 
-		No variables are going to be used in the query, so we can 
-		use the PDO::query() method. */
+		 No variables are going to be used in the query, so we can 
+		 use the PDO::query() method. */
 		$sql = "SELECT * FROM hw_items ORDER BY Date ASC";
 		$stmt = $conn -> query($sql);
 		$hw_list = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	} catch (PDOException $e) {
-		 echo $e -> getMessage() . "<h1>Resource Unavailable. Please contact the System Administrator</h1>";
+		 echo $e -> getMessage() . "<h3>Resource Unavailable. Please contact the System Administrator</h3>";
 	}
 //End of Connection
-
  ?>
 	 
     <h1>My Homework Assignments<img src="img/homework.png"></h1>
@@ -35,25 +34,21 @@ require ("dbinfo.inc.php"); //include login info file
     <!--======== New Assignment Modal  =========== -->
    	<a href="#openModal">Create New Assignment</a>
 		<div id="openModal" class="modalDialog">
-			<div>
+		  <div>
 			<a href="#close" title="Close" class="close">X</a>
 				<h2>Add Assignment</h2>
 				<form method="POST" action="add_item.php">
-					<p>
-						Title:
-						<br />
+					<label>Title:<br>
 						<input type="text" class="title" name="title" placeholder="Homework Assignment" required/>
-					</p>
-					<p>
-						Date Due:
-						<br />
+					</label>
+					<label><br>
+						Date Due:<br>
 						<input type="date" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" />
-					</p>
-					<p>
-						Description:
-						<br />
+					</label>
+					<label><br>
+						Description:<br>
 						<textarea class="description" name="description"></textarea>
-					</p>
+					</label>
 					<div class="actions">
 						<input type="submit" value="Add Assignment" name="new_submit" />
 					</div>
@@ -65,19 +60,17 @@ require ("dbinfo.inc.php"); //include login info file
     
     <!--=================  Main HTML Markup Here  ====================-->
     <main>
-        <h2>Assignment's Due.</h2>
-           <h3>(Click Details to edit)</h3>
+        <h2>Assignment's Due</h2>
         <div id="post_message"></div>  <!-- Placeholder for AJAX status request message -->
         <div id = "list">
             <?php foreach($hw_list as $hw)  {
-            	    echo '<ul>';
-            	      echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
-                      echo "<h4>Due On:</h4><li>" . date('D F j', strtotime($hw['Date'])) . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
-				      echo  "<h4>Details:</h4><li class ='description' contenteditable='true' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
-				    echo '</ul>';
-			      }
+            	           echo '<ul>';
+            	              echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
+                              echo "<h4>Due On:</h4><li>" . date('D F j', strtotime($hw['Date'])) . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
+				              echo  "<h4>Details:</h4><li class ='description' contenteditable='true' title='Click here to edit' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
+				           echo '</ul>';
+			               }
 			 ?>
-                
         </div>
     </main>
     

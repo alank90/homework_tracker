@@ -8,7 +8,7 @@ try
        // get the 'id' variable from the URL and store it in $id_val
     $id_val = $_REQUEST['id'];
 	
-	//Note here we use positional placeholder in prepare staement
+	//Note here we use positional placeholder in prepare statement
     $stmt = $conn->prepare("DELETE FROM hw_items WHERE id = ?");
     $stmt -> execute([$id_val]);	
     echo 'Deleted Record Sucessfully';
@@ -16,7 +16,7 @@ try
  }
 catch (PDOException $e)
  {
-    echo $e->getMessage() . "<h1>An error occurred.</h1>";
+    echo $e->getMessage() . "<h3>An error occurred.</h3>";
  }
 
 	

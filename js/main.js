@@ -4,7 +4,7 @@ var el = document.getElementById("list");
 var str = "";
 var id_val;
 
-//Get updated Desription field value when click outside of UL field.
+//Get updated Desription field value when click outside of ul field.
 el.addEventListener("blur", function(e) {
 	str = e.target.innerHTML;
 	id_val = e.target.getAttribute("data-id");
@@ -26,7 +26,7 @@ el.addEventListener("blur", function(e) {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("post_message").innerHTML = this.responseText;
 		}
-	}
+	 }
 	// Setup and sending of the AJAX request
 	var parameters = "desc_value=" + str + "&id=" + id_val;
 	xmlhttp.open("POST", "update.php", true);
