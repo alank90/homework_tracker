@@ -60,7 +60,6 @@ li {
 h1 img  {
 	max-width: 10vw;
 	margin-left: 3vw;
-	height: auto;
 }
 
 .btn {
@@ -80,7 +79,7 @@ h1 img  {
 	width: 1.5vw;
 }
    
-   #post_message {
+ #post_message {
 	font-size: 20px;
 	font-weight: 700;
 	text-align: center;
@@ -140,7 +139,7 @@ a[href="#openModal"] {
     }
 
     .modalDialog > div {
-	   width: 400px;
+	   max-width: 30vw;
 	   position: relative;
 	   margin: 10% auto;
 	   padding: 5px 20px 13px 20px;
