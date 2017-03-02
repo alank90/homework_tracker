@@ -141,7 +141,7 @@ a[href="#openModal"] {
     .modalDialog > div {
 	   max-width: 30vw;
 	   position: relative;
-	   margin: 10% auto;
+	   margin: 5% auto;
 	   padding: 5px 20px 13px 20px;
 	   border-radius: 10px;
 	   background: #5fc5f2;
