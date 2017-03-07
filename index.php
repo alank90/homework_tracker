@@ -45,7 +45,7 @@ require ("dbinfo.inc.php"); //include login info file
 					</label>
 					<label><br>
 						Date Due:<br>
-						<input type="date" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" />
+						<input type="date" class="datepicker" name="due_date" placeholder="MM/DD/YYYY" title="Use format MM/DD/YYYY" pattern="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$" />
 					</label>
 					<label><br>
 						Description:<br>
