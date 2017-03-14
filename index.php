@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -66,12 +67,12 @@ require ("dbinfo.inc.php"); //include login info file
         <div id="post_message"></div>  <!-- Placeholder for AJAX status request message -->
         <div id = "list">
             <?php foreach($hw_list as $hw)  {
-            	           echo '<ul>';
-            	              echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
-                              echo "<h4>Due On:</h4><li>" . date('D F j', strtotime($hw['Date'])) . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
-				              echo  "<h4>Details:</h4><li class ='description' contenteditable='true' title='Click here to edit' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
-				           echo '</ul>';
-			               }
+            	     echo '<ul>';
+            	         echo  '<h4>Assignment:</h4><li>' .  $hw['Title'] . '</li>';
+                         echo "<h4>Due On:</h4><li>" . date('D F j', strtotime($hw['Date'])) . "<a title='Click Here to Delete'  href='delete.php?id=" . $hw['id'] . "'><button class='btn' id='delete'><img class = 'delete_btn' src='img/delete.png' alt='Delete Button'></button></a></li>";
+				         echo  "<h4>Details:</h4><li class ='description' contenteditable='true' title='Click here to edit' data-id=" . $hw['id'] . ">" . $hw['Description'] . "</li>";
+				         echo '</ul>';
+			         }
 			 ?>
         </div>
     </main>
